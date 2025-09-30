@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>واتساب - التوثيق الرسمي</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --green-50: #f0fdf4;
+      --green-100: #dcfce7;
+      --green-200: #bbf7d0;
+      --green-600: #16a34a;
+      --green-700: #15803d;
+      --emerald-50: #f0fdfa;
+      --cyan-50: #ecfeff;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-400: #9ca3af;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --white: #ffffff;
+      --black: #000000;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, var(--emerald-50), var(--cyan-50));
+      color: var(--gray-900);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Navigation */
+    nav {
+      background: var(--white);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 4rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+
+    .logo-icon {
+      width: 2rem;
+      height: 2rem;
+      background: var(--green-600);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray-700);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--green-600);
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      border: none;
+      font-size: 1.125rem;
+    }
+
+    .btn-primary {
+      background: var(--green-600);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--green-700);
+    }
+
+    .btn-dark {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .btn-dark:hover {
+      background: #333;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 5rem 0;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--gray-600);
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    @media (min-width: 640px) {
+      .hero-buttons {
+        flex-direction: row;
+      }
+    }
+
+    /* Sections */
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title p {
+      color: var(--gray-600);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Features */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .feature-card {
+      background: var(--gray-50);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .feature-icon {
+      color: var(--green-600);
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+      color: var(--gray-600);
+    }
+
+    /* Steps */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .step-item {
+      text-align: center;
+    }
+
+    .step-number {
+      width: 4rem;
+      height: 4rem;
+      background: var(--green-100);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-weight: bold;
+      color: var(--green-600);
+      font-size: 1.25rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--gray-900);
+      color: var(--white);
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    footer a {
+      color: #9ca3af;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--white);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="container nav-container">
+      <div class="logo">
+        <div class="logo-icon" id="phone-icon"></div>
+        <span>واتساب</span>
+      </div>
+      <div class="nav-links">
+        <a href="#features">الميزات</a>
+        <a href="#how-to">كيفية الاستخدام</a>
+        <a href="#security">الأمان</a>
+        <a href="#download" class="btn btn-primary">تنزيل الآن</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div id="message-icon" style="width: 5rem; height: 5rem; background: var(--green-600); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: white;"></div>
+      <h1>واتساب</h1>
+      <p>التطبيق الأكثر استخداماً في العالم للتواصل الفوري والآمن مع الأصدقاء والعائلة والزملاء</p>
+      <div class="hero-buttons">
+        <a href="#" class="btn btn-primary">
+          <span id="phone-icon-2"></span> تنزيل للأندرويد
+        </a>
+        <a href="#" class="btn btn-dark">
+          <span id="phone-icon-3"></span> تنزيل لـ iOS
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="section" style="background: white;">
+    <div class="container">
+      <div class="section-title">
+        <h2>ميزات واتساب</h2>
+        <p>اكتشف الميزات التي تجعل واتساب الخيار الأول لملايين المستخدمين حول العالم</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon" id="shield-icon"></div>
+          <h3>الأمان والتشفير</h3>
+          <p>جميع الرسائل مشفرة من طرف لطرف لضمان خصوصيتك وأمان معلوماتك</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" id="zap-icon"></div>
+          <h3>السرعة والموثوقية</h3>
+          <p>إرسال الرسائل فوراً مع ضمان التسليم حتى في الاتصالات البطيئة</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" id="globe-icon"></div>
+          <h3>الدعم العالمي</h3>
+          <p>متاح في أكثر من 180 دولة مع دعم للغات متعددة</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" id="users-icon"></div>
+          <h3>المكالمات الجماعية</h3>
+          <p>قم بإجراء مكالمات صوتية وفيديو جماعية مع ما يصل إلى 32 شخصاً</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How To -->
+  <section id="how-to" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>كيفية استخدام واتساب</h2>
+        <p>اتبع هذه الخطوات البسيطة للبدء باستخدام واتساب</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-item">
+          <div class="step-number">01</div>
+          <h3>تنزيل التطبيق</h3>
+          <p>قم بتنزيل تطبيق واتساب من متجر التطبيقات الخاص بجهازك</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">02</div>
+          <h3>التحقق من الرقم</h3>
+          <p>أدخل رقم هاتفك وقم بالتحقق عبر رمز التحقق المرسل</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">03</div>
+          <h3>إعداد الملف الشخصي</h3>
+          <p>أضف صورة الملف الشخصي واسمك لبدء استخدام واتساب</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">04</div>
+          <h3>ابدأ الدردشة</h3>
+          <p>ابحث عن جهات الاتصال الخاصة بك وابدأ إرسال الرسائل فوراً</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
+        <div class="logo-icon" id="footer-phone-icon"></div>
+        <span>واتساب</span>
+      </div>
+      <p>© 2024 واتساب. جميع الحقوق محفوظة.</p>
+      <div class="footer-links">
+        <a href="#">الخصوصية</a>
+        <a href="#">الشروط</a>
+        <a href="#">المساعدة</a>
+        <a href="#">الوظائف</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Load Lucide icons
+    lucide.createIcons();
+
+    // Optional: smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+  </html>
