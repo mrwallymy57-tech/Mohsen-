@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>واتساب - التوثيق</title>
+  <title>واتساب - التوثيق العالمي</title>
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     :root {
@@ -22,6 +22,9 @@
       --gray-900: #111827;
       --white: #ffffff;
       --black: #000000;
+      --blue-500: #3b82f6;
+      --purple-500: #8b5cf6;
+      --pink-500: #ec4899;
     }
 
     * {
@@ -32,22 +35,31 @@
     }
 
     body {
-      background: linear-gradient(to bottom right, var(--emerald-50), var(--cyan-50));
+      background: linear-gradient(135deg, var(--emerald-50), var(--cyan-50), var(--blue-500), var(--purple-500));
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       color: var(--gray-900);
       line-height: 1.6;
     }
 
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     .container {
       width: 100%;
-      max-width: 480px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 1rem;
     }
 
     /* Navigation */
     nav {
-      background: var(--white);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
       z-index: 50;
@@ -65,12 +77,13 @@
       align-items: center;
       gap: 0.5rem;
       font-weight: bold;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
+      color: var(--green-600);
     }
 
     .logo-icon {
-      width: 2rem;
-      height: 2rem;
+      width: 2.5rem;
+      height: 2.5rem;
       background: var(--green-600);
       border-radius: 50%;
       display: flex;
@@ -79,9 +92,65 @@
       color: var(--white);
     }
 
+    /* Hero Section */
+    .hero {
+      padding: 4rem 0 2rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--white);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    @media (min-width: 768px) {
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--white);
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    }
+
+    /* Stats Section */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      text-align: center;
+      min-width: 120px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .stat-number {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--green-600);
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+    }
+
     /* Main Content */
     .main {
-      min-height: calc(100vh - 4rem);
+      min-height: calc(100vh - 20rem);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -90,15 +159,28 @@
 
     .card {
       background: var(--white);
-      border-radius: 1.5rem;
-      padding: 2rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      border-radius: 2rem;
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.6s ease-out;
     }
 
-    .card h1 {
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card h2 {
       text-align: center;
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
       color: var(--gray-900);
     }
 
@@ -106,6 +188,8 @@
       text-align: center;
       color: var(--gray-600);
       margin-bottom: 2rem;
+      font-size: 1.1rem;
+      line-height: 1.8;
     }
 
     .form-group {
@@ -114,24 +198,33 @@
 
     .form-group label {
       display: block;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
       font-weight: 600;
       color: var(--gray-700);
+      font-size: 1.1rem;
     }
 
     .input-group {
       display: flex;
       align-items: center;
       background: var(--gray-50);
-      border-radius: 1rem;
-      padding: 0.75rem 1rem;
+      border-radius: 1.5rem;
+      padding: 1rem 1.5rem;
+      border: 2px solid transparent;
+      transition: border-color 0.3s;
+    }
+
+    .input-group:focus-within {
+      border-color: var(--green-600);
     }
 
     .input-group i {
-      margin-right: 0.75rem;
+      margin-right: 1rem;
       color: var(--gray-400);
+      font-size: 1.25rem;
     }
 
+    .input-group select,
     .input-group input {
       flex: 1;
       border: none;
@@ -141,52 +234,70 @@
       color: var(--gray-900);
     }
 
+    .input-group select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1rem;
+      padding-right: 2.5rem;
+    }
+
     .code-input {
       display: flex;
       justify-content: center;
-      gap: 0.5rem;
-      margin: 1.5rem 0;
+      gap: 0.75rem;
+      margin: 2rem 0;
     }
 
     .code-input input {
-      width: 3rem;
-      height: 3.5rem;
+      width: 4rem;
+      height: 4.5rem;
       text-align: center;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       font-weight: bold;
-      border: 2px solid var(--gray-200);
-      border-radius: 0.75rem;
+      border: 3px solid var(--gray-200);
+      border-radius: 1.25rem;
       outline: none;
       color: var(--gray-900);
+      background: var(--gray-50);
+      transition: all 0.3s;
     }
 
     .code-input input:focus {
       border-color: var(--green-600);
+      background: var(--white);
+      transform: scale(1.05);
     }
 
     .btn {
       width: 100%;
-      padding: 1rem;
-      border-radius: 1rem;
-      font-weight: 600;
+      padding: 1.25rem;
+      border-radius: 1.5rem;
+      font-weight: 700;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.3s;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
+      gap: 0.75rem;
       text-decoration: none;
       border: none;
-      font-size: 1.125rem;
+      font-size: 1.25rem;
+      letter-spacing: 0.5px;
     }
 
     .btn-primary {
-      background: var(--green-600);
+      background: linear-gradient(135deg, var(--green-600), var(--green-700));
       color: var(--white);
+      box-shadow: 0 8px 25px rgba(22, 163, 74, 0.4);
     }
 
     .btn-primary:hover {
-      background: var(--green-700);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(22, 163, 74, 0.6);
     }
 
     .btn-secondary {
@@ -201,23 +312,72 @@
     .timer {
       text-align: center;
       color: var(--gray-600);
-      margin-top: 1rem;
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
     }
 
     .hidden {
       display: none;
     }
 
+    /* Countries Grid */
+    .countries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+      max-height: 300px;
+      overflow-y: auto;
+      padding: 1rem;
+      background: var(--gray-50);
+      border-radius: 1.5rem;
+    }
+
+    .country-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      border-radius: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .country-item:hover {
+      background: var(--white);
+      transform: translateX(5px);
+    }
+
+    .country-flag {
+      width: 24px;
+      height: 18px;
+      border-radius: 3px;
+      background: var(--gray-300);
+    }
+
     /* Responsive */
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
       .card {
         padding: 1.5rem;
       }
       
       .code-input input {
-        width: 2.5rem;
-        height: 3rem;
-        font-size: 1.125rem;
+        width: 3rem;
+        height: 3.5rem;
+        font-size: 1.25rem;
+      }
+      
+      .countries-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        max-height: 200px;
       }
     }
   </style>
@@ -233,37 +393,134 @@
     </div>
   </nav>
 
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>التوثيق العالمي لواتساب</h1>
+      <p>انضم إلى أكثر من 2 مليار مستخدم حول العالم في تجربة التواصل الأكثر أماناً وسلاسة!</p>
+      
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-number">2B+</div>
+          <div class="stat-label">مستخدم نشط</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">180+</div>
+          <div class="stat-label">دولة</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">تشفير من طرف لطرف</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Main Content -->
   <main class="main">
     <div class="container">
       <!-- Phone Input Form -->
       <div id="phone-form" class="card">
-        <div style="width: 3rem; height: 3rem; background: var(--green-600); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white;">
-          <i id="message-icon"></i>
+        <div style="width: 4rem; height: 4rem; background: linear-gradient(135deg, var(--green-600), var(--green-700)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: white;">
+          <i id="message-icon" style="width: 24px; height: 24px;"></i>
         </div>
-        <h1>مرحباً بك في واتساب</h1>
-        <p>أدخل رقم هاتفك لبدء التحقق</p>
+        <h2>مرحباً بك في واتساب!</h2>
+        <p>واتساب هو التطبيق الأكثر أماناً وموثوقية للتواصل الفوري مع الأصدقاء والعائلة والزملاء في جميع أنحاء العالم.</p>
+        
+        <div class="form-group">
+          <label for="country">اختر دولتك</label>
+          <div class="input-group">
+            <i id="globe-icon"></i>
+            <select id="country">
+              <option value="">اختر الدولة...</option>
+              <option value="SA">السعودية 🇸🇦</option>
+              <option value="EG">مصر 🇪🇬</option>
+              <option value="AE">الإمارات 🇦🇪</option>
+              <option value="QA">قطر 🇶🇦</option>
+              <option value="KW">الكويت 🇰🇼</option>
+              <option value="BH">البحرين 🇧🇭</option>
+              <option value="OM">عُمان 🇴🇲</option>
+              <option value="JO">الأردن 🇯🇴</option>
+              <option value="LB">لبنان 🇱🇧</option>
+              <option value="SY">سوريا 🇸🇾</option>
+              <option value="IQ">العراق 🇮🇶</option>
+              <option value="YE">اليمن 🇾🇪</option>
+              <option value="PS">فلسطين 🇵🇸</option>
+              <option value="TN">تونس 🇹🇳</option>
+              <option value="DZ">الجزائر 🇩🇿</option>
+              <option value="MA">المغرب 🇲🇦</option>
+              <option value="LY">ليبيا 🇱🇾</option>
+              <option value="SD">السودان 🇸🇩</option>
+              <option value="SO">الصومال 🇸🇴</option>
+              <option value="DJ">جيبوتي 🇩🇯</option>
+              <option value="MR">موريتانيا 🇲🇷</option>
+              <option value="US">الولايات المتحدة 🇺🇸</option>
+              <option value="GB">المملكة المتحدة 🇬🇧</option>
+              <option value="FR">فرنسا 🇫🇷</option>
+              <option value="DE">ألمانيا 🇩🇪</option>
+              <option value="IT">إيطاليا 🇮🇹</option>
+              <option value="ES">إسبانيا 🇪🇸</option>
+              <option value="PT">البرتغال 🇵🇹</option>
+              <option value="NL">هولندا 🇳🇱</option>
+              <option value="BE">بلجيكا 🇧🇪</option>
+              <option value="CH">سويسرا 🇨🇭</option>
+              <option value="AT">النمسا 🇦🇹</option>
+              <option value="SE">السويد 🇸🇪</option>
+              <option value="NO">النرويج 🇳🇴</option>
+              <option value="DK">الدنمارك 🇩🇰</option>
+              <option value="FI">فنلندا 🇫🇮</option>
+              <option value="RU">روسيا 🇷🇺</option>
+              <option value="UA">أوكرانيا 🇺🇦</option>
+              <option value="PL">بولندا 🇵🇱</option>
+              <option value="CZ">التشيك 🇨🇿</option>
+              <option value="HU">المجر 🇭🇺</option>
+              <option value="RO">رومانيا 🇷🇴</option>
+              <option value="BG">بلغاريا 🇧🇬</option>
+              <option value="GR">اليونان 🇬🇷</option>
+              <option value="TR">تركيا 🇹🇷</option>
+              <option value="IR">إيران 🇮🇷</option>
+              <option value="PK">باكستان 🇵🇰</option>
+              <option value="IN">الهند 🇮🇳</option>
+              <option value="CN">الصين 🇨🇳</option>
+              <option value="JP">اليابان 🇯🇵</option>
+              <option value="KR">كوريا الجنوبية 🇰🇷</option>
+              <option value="AU">أستراليا 🇦🇺</option>
+              <option value="NZ">نيوزيلندا 🇳🇿</option>
+              <option value="CA">كندا 🇨🇦</option>
+              <option value="BR">البرازيل 🇧🇷</option>
+              <option value="AR">الأرجنتين 🇦🇷</option>
+              <option value="MX">المكسيك 🇲🇽</option>
+              <option value="CO">كولومبيا 🇨🇴</option>
+              <option value="PE">بيرو 🇵🇪</option>
+              <option value="CL">تشيلي 🇨🇱</option>
+              <option value="ZA">جنوب أفريقيا 🇿🇦</option>
+              <option value="NG">نيجيريا 🇳🇬</option>
+              <option value="KE">كينيا 🇰🇪</option>
+              <option value="GH">غانا 🇬🇭</option>
+            </select>
+          </div>
+        </div>
         
         <div class="form-group">
           <label for="phone">رقم الهاتف</label>
           <div class="input-group">
             <i id="phone-input-icon"></i>
-            <input type="tel" id="phone" placeholder="05XXXXXXXX" maxlength="10" />
+            <input type="tel" id="phone" placeholder="أدخل رقم الهاتف" maxlength="15" />
           </div>
         </div>
         
         <button id="continue-btn" class="btn btn-primary">
-          <i id="arrow-right-icon"></i> متابعة
+          <i id="arrow-right-icon"></i> متابعة التحقق
         </button>
       </div>
 
       <!-- Code Input Form -->
       <div id="code-form" class="card hidden">
-        <div style="width: 3rem; height: 3rem; background: var(--green-600); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white;">
-          <i id="lock-icon"></i>
+        <div style="width: 4rem; height: 4rem; background: linear-gradient(135deg, var(--green-600), var(--green-700)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: white;">
+          <i id="lock-icon" style="width: 24px; height: 24px;"></i>
         </div>
-        <h1>التحقق من الرمز</h1>
-        <p id="phone-display">أدخل رمز التحقق المرسل إلى <strong id="displayed-phone"></strong></p>
+        <h2>تأكيد الهوية</h2>
+        <p id="phone-display">تم إرسال رمز التحقق إلى الرقم <strong id="displayed-phone"></strong></p>
         
         <div class="code-input">
           <input type="text" maxlength="1" data-index="0" />
@@ -275,14 +532,14 @@
         </div>
         
         <button id="verify-btn" class="btn btn-primary">
-          <i id="check-icon"></i> التحقق
+          <i id="check-icon"></i> تأكيد الرمز
         </button>
         
-        <button id="back-btn" class="btn btn-secondary" style="margin-top: 1rem;">
-          <i id="arrow-left-icon"></i> العودة
+        <button id="back-btn" class="btn btn-secondary" style="margin-top: 1.5rem;">
+          <i id="arrow-left-icon"></i> العودة لتغيير الرقم
         </button>
         
-        <div class="timer" id="timer">يمكنك إعادة إرسال الرمز خلال <span id="countdown">30</span> ثانية</div>
+        <div class="timer" id="timer">يمكنك إعادة إرسال الرمز خلال <span id="countdown">60</span> ثانية</div>
       </div>
     </div>
   </main>
@@ -294,6 +551,7 @@
     // DOM Elements
     const phoneForm = document.getElementById('phone-form');
     const codeForm = document.getElementById('code-form');
+    const countrySelect = document.getElementById('country');
     const phoneInput = document.getElementById('phone');
     const displayedPhone = document.getElementById('displayed-phone');
     const continueBtn = document.getElementById('continue-btn');
@@ -302,25 +560,34 @@
     const codeInputs = document.querySelectorAll('.code-input input');
     const countdownEl = document.getElementById('countdown');
     
-    let countdown = 30;
+    let countdown = 60;
     let countdownInterval;
 
     // Phone input validation
     phoneInput.addEventListener('input', function(e) {
-      this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+      this.value = this.value.replace(/[^0-9]/g, '');
     });
 
     // Continue button click
     continueBtn.addEventListener('click', function() {
+      const country = countrySelect.value;
       const phone = phoneInput.value;
-      if (phone.length === 10 && phone.startsWith('05')) {
-        displayedPhone.textContent = phone;
-        phoneForm.classList.add('hidden');
-        codeForm.classList.remove('hidden');
-        startCountdown();
-      } else {
-        alert('الرجاء إدخال رقم هاتف سعودي صحيح (يبدأ بـ 05 ويتكون من 10 أرقام)');
+      
+      if (!country) {
+        alert('الرجاء اختيار الدولة');
+        return;
       }
+      
+      if (phone.length < 6) {
+        alert('الرجاء إدخال رقم هاتف صحيح');
+        return;
+      }
+      
+      const countryName = countrySelect.options[countrySelect.selectedIndex].text;
+      displayedPhone.textContent = `${countryName} (${phone})`;
+      phoneForm.classList.add('hidden');
+      codeForm.classList.remove('hidden');
+      startCountdown();
     });
 
     // Back button click
@@ -350,7 +617,8 @@
     verifyBtn.addEventListener('click', function() {
       const code = Array.from(codeInputs).map(input => input.value).join('');
       if (code.length === 6) {
-        alert('تم التحقق بنجاح! سيتم توجيهك إلى واتساب...');
+        // Show success message with animation
+        alert('✅ تم التحقق بنجاح! 🎉\n\nمرحباً بك في عائلة واتساب العالمية! 🌍\nستتمكن الآن من التواصل بأمان تام مع أكثر من 2 مليار شخص حول العالم.');
         // Here you would typically redirect or proceed with the app
       } else {
         alert('الرجاء إدخال رمز التحقق المكون من 6 أرقام');
@@ -358,7 +626,7 @@
     });
 
     function startCountdown() {
-      countdown = 30;
+      countdown = 60;
       countdownEl.textContent = countdown;
       
       countdownInterval = setInterval(() => {
@@ -367,7 +635,7 @@
         
         if (countdown <= 0) {
           clearInterval(countdownInterval);
-          document.querySelector('.timer').innerHTML = 'يمكنك الآن <a href="#" style="color: var(--green-600); text-decoration: underline;">إعادة إرسال الرمز</a>';
+          document.querySelector('.timer').innerHTML = 'يمكنك الآن <a href="#" style="color: var(--green-600); text-decoration: underline; font-weight: bold;">إعادة إرسال الرمز</a>';
         }
       }, 1000);
     }
