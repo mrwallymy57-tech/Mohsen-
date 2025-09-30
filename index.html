@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>واتساب - التوثيق الرسمي</title>
+  <title>واتساب - التوثيق</title>
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     :root {
@@ -39,7 +39,7 @@
 
     .container {
       width: 100%;
-      max-width: 1280px;
+      max-width: 480px;
       margin: 0 auto;
       padding: 0 1rem;
     }
@@ -79,30 +79,101 @@
       color: var(--white);
     }
 
-    .nav-links {
+    /* Main Content */
+    .main {
+      min-height: calc(100vh - 4rem);
       display: flex;
-      gap: 2rem;
-      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem 0;
     }
 
-    .nav-links a {
-      text-decoration: none;
+    .card {
+      background: var(--white);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .card h1 {
+      text-align: center;
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: var(--gray-900);
+    }
+
+    .card p {
+      text-align: center;
+      color: var(--gray-600);
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
       color: var(--gray-700);
-      transition: color 0.2s;
     }
 
-    .nav-links a:hover {
-      color: var(--green-600);
+    .input-group {
+      display: flex;
+      align-items: center;
+      background: var(--gray-50);
+      border-radius: 1rem;
+      padding: 0.75rem 1rem;
+    }
+
+    .input-group i {
+      margin-right: 0.75rem;
+      color: var(--gray-400);
+    }
+
+    .input-group input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 1.125rem;
+      color: var(--gray-900);
+    }
+
+    .code-input {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .code-input input {
+      width: 3rem;
+      height: 3.5rem;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: bold;
+      border: 2px solid var(--gray-200);
+      border-radius: 0.75rem;
+      outline: none;
+      color: var(--gray-900);
+    }
+
+    .code-input input:focus {
+      border-color: var(--green-600);
     }
 
     .btn {
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.75rem;
+      width: 100%;
+      padding: 1rem;
+      border-radius: 1rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
       text-decoration: none;
       border: none;
@@ -118,162 +189,35 @@
       background: var(--green-700);
     }
 
-    .btn-dark {
-      background: var(--black);
-      color: var(--white);
+    .btn-secondary {
+      background: var(--gray-100);
+      color: var(--gray-700);
     }
 
-    .btn-dark:hover {
-      background: #333;
+    .btn-secondary:hover {
+      background: var(--gray-200);
     }
 
-    /* Hero */
-    .hero {
-      padding: 5rem 0;
+    .timer {
       text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    @media (min-width: 768px) {
-      .hero h1 {
-        font-size: 3.5rem;
-      }
-    }
-
-    .hero p {
-      font-size: 1.25rem;
       color: var(--gray-600);
-      max-width: 700px;
-      margin: 0 auto 2rem;
+      margin-top: 1rem;
     }
 
-    .hero-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      justify-content: center;
-    }
-
-    @media (min-width: 640px) {
-      .hero-buttons {
-        flex-direction: row;
-      }
-    }
-
-    /* Sections */
-    .section {
-      padding: 5rem 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .section-title h2 {
-      font-size: 2.25rem;
-      margin-bottom: 1rem;
-    }
-
-    .section-title p {
-      color: var(--gray-600);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* Features */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .feature-card {
-      background: var(--gray-50);
-      padding: 1.5rem;
-      border-radius: 1rem;
-      transition: box-shadow 0.2s;
-    }
-
-    .feature-card:hover {
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
-
-    .feature-icon {
-      color: var(--green-600);
-      margin-bottom: 1rem;
-      display: inline-block;
-    }
-
-    .feature-card h3 {
-      margin-bottom: 0.5rem;
-    }
-
-    .feature-card p {
-      color: var(--gray-600);
-    }
-
-    /* Steps */
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .step-item {
-      text-align: center;
-    }
-
-    .step-number {
-      width: 4rem;
-      height: 4rem;
-      background: var(--green-100);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-      font-weight: bold;
-      color: var(--green-600);
-      font-size: 1.25rem;
-    }
-
-    /* Footer */
-    footer {
-      background: var(--gray-900);
-      color: var(--white);
-      padding: 3rem 0;
-      text-align: center;
-    }
-
-    footer a {
-      color: #9ca3af;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    footer a:hover {
-      color: var(--white);
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-top: 1.5rem;
+    .hidden {
+      display: none;
     }
 
     /* Responsive */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
+    @media (max-width: 480px) {
+      .card {
+        padding: 1.5rem;
+      }
+      
+      .code-input input {
+        width: 2.5rem;
+        height: 3rem;
+        font-size: 1.125rem;
       }
     }
   </style>
@@ -286,130 +230,152 @@
         <div class="logo-icon" id="phone-icon"></div>
         <span>واتساب</span>
       </div>
-      <div class="nav-links">
-        <a href="#features">الميزات</a>
-        <a href="#how-to">كيفية الاستخدام</a>
-        <a href="#security">الأمان</a>
-        <a href="#download" class="btn btn-primary">تنزيل الآن</a>
-      </div>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero">
+  <!-- Main Content -->
+  <main class="main">
     <div class="container">
-      <div id="message-icon" style="width: 5rem; height: 5rem; background: var(--green-600); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: white;"></div>
-      <h1>واتساب</h1>
-      <p>التطبيق الأكثر استخداماً في العالم للتواصل الفوري والآمن مع الأصدقاء والعائلة والزملاء</p>
-      <div class="hero-buttons">
-        <a href="#" class="btn btn-primary">
-          <span id="phone-icon-2"></span> تنزيل للأندرويد
-        </a>
-        <a href="#" class="btn btn-dark">
-          <span id="phone-icon-3"></span> تنزيل لـ iOS
-        </a>
+      <!-- Phone Input Form -->
+      <div id="phone-form" class="card">
+        <div style="width: 3rem; height: 3rem; background: var(--green-600); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white;">
+          <i id="message-icon"></i>
+        </div>
+        <h1>مرحباً بك في واتساب</h1>
+        <p>أدخل رقم هاتفك لبدء التحقق</p>
+        
+        <div class="form-group">
+          <label for="phone">رقم الهاتف</label>
+          <div class="input-group">
+            <i id="phone-input-icon"></i>
+            <input type="tel" id="phone" placeholder="05XXXXXXXX" maxlength="10" />
+          </div>
+        </div>
+        
+        <button id="continue-btn" class="btn btn-primary">
+          <i id="arrow-right-icon"></i> متابعة
+        </button>
       </div>
-    </div>
-  </section>
 
-  <!-- Features -->
-  <section id="features" class="section" style="background: white;">
-    <div class="container">
-      <div class="section-title">
-        <h2>ميزات واتساب</h2>
-        <p>اكتشف الميزات التي تجعل واتساب الخيار الأول لملايين المستخدمين حول العالم</p>
-      </div>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon" id="shield-icon"></div>
-          <h3>الأمان والتشفير</h3>
-          <p>جميع الرسائل مشفرة من طرف لطرف لضمان خصوصيتك وأمان معلوماتك</p>
+      <!-- Code Input Form -->
+      <div id="code-form" class="card hidden">
+        <div style="width: 3rem; height: 3rem; background: var(--green-600); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; color: white;">
+          <i id="lock-icon"></i>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon" id="zap-icon"></div>
-          <h3>السرعة والموثوقية</h3>
-          <p>إرسال الرسائل فوراً مع ضمان التسليم حتى في الاتصالات البطيئة</p>
+        <h1>التحقق من الرمز</h1>
+        <p id="phone-display">أدخل رمز التحقق المرسل إلى <strong id="displayed-phone"></strong></p>
+        
+        <div class="code-input">
+          <input type="text" maxlength="1" data-index="0" />
+          <input type="text" maxlength="1" data-index="1" />
+          <input type="text" maxlength="1" data-index="2" />
+          <input type="text" maxlength="1" data-index="3" />
+          <input type="text" maxlength="1" data-index="4" />
+          <input type="text" maxlength="1" data-index="5" />
         </div>
-        <div class="feature-card">
-          <div class="feature-icon" id="globe-icon"></div>
-          <h3>الدعم العالمي</h3>
-          <p>متاح في أكثر من 180 دولة مع دعم للغات متعددة</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon" id="users-icon"></div>
-          <h3>المكالمات الجماعية</h3>
-          <p>قم بإجراء مكالمات صوتية وفيديو جماعية مع ما يصل إلى 32 شخصاً</p>
-        </div>
+        
+        <button id="verify-btn" class="btn btn-primary">
+          <i id="check-icon"></i> التحقق
+        </button>
+        
+        <button id="back-btn" class="btn btn-secondary" style="margin-top: 1rem;">
+          <i id="arrow-left-icon"></i> العودة
+        </button>
+        
+        <div class="timer" id="timer">يمكنك إعادة إرسال الرمز خلال <span id="countdown">30</span> ثانية</div>
       </div>
     </div>
-  </section>
-
-  <!-- How To -->
-  <section id="how-to" class="section">
-    <div class="container">
-      <div class="section-title">
-        <h2>كيفية استخدام واتساب</h2>
-        <p>اتبع هذه الخطوات البسيطة للبدء باستخدام واتساب</p>
-      </div>
-      <div class="steps-grid">
-        <div class="step-item">
-          <div class="step-number">01</div>
-          <h3>تنزيل التطبيق</h3>
-          <p>قم بتنزيل تطبيق واتساب من متجر التطبيقات الخاص بجهازك</p>
-        </div>
-        <div class="step-item">
-          <div class="step-number">02</div>
-          <h3>التحقق من الرقم</h3>
-          <p>أدخل رقم هاتفك وقم بالتحقق عبر رمز التحقق المرسل</p>
-        </div>
-        <div class="step-item">
-          <div class="step-number">03</div>
-          <h3>إعداد الملف الشخصي</h3>
-          <p>أضف صورة الملف الشخصي واسمك لبدء استخدام واتساب</p>
-        </div>
-        <div class="step-item">
-          <div class="step-number">04</div>
-          <h3>ابدأ الدردشة</h3>
-          <p>ابحث عن جهات الاتصال الخاصة بك وابدأ إرسال الرسائل فوراً</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
-        <div class="logo-icon" id="footer-phone-icon"></div>
-        <span>واتساب</span>
-      </div>
-      <p>© 2024 واتساب. جميع الحقوق محفوظة.</p>
-      <div class="footer-links">
-        <a href="#">الخصوصية</a>
-        <a href="#">الشروط</a>
-        <a href="#">المساعدة</a>
-        <a href="#">الوظائف</a>
-      </div>
-    </div>
-  </footer>
+  </main>
 
   <script>
     // Load Lucide icons
     lucide.createIcons();
 
-    // Optional: smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          window.scrollTo({
-            top: target.offsetTop - 80,
-            behavior: 'smooth'
-          });
+    // DOM Elements
+    const phoneForm = document.getElementById('phone-form');
+    const codeForm = document.getElementById('code-form');
+    const phoneInput = document.getElementById('phone');
+    const displayedPhone = document.getElementById('displayed-phone');
+    const continueBtn = document.getElementById('continue-btn');
+    const backBtn = document.getElementById('back-btn');
+    const verifyBtn = document.getElementById('verify-btn');
+    const codeInputs = document.querySelectorAll('.code-input input');
+    const countdownEl = document.getElementById('countdown');
+    
+    let countdown = 30;
+    let countdownInterval;
+
+    // Phone input validation
+    phoneInput.addEventListener('input', function(e) {
+      this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+    });
+
+    // Continue button click
+    continueBtn.addEventListener('click', function() {
+      const phone = phoneInput.value;
+      if (phone.length === 10 && phone.startsWith('05')) {
+        displayedPhone.textContent = phone;
+        phoneForm.classList.add('hidden');
+        codeForm.classList.remove('hidden');
+        startCountdown();
+      } else {
+        alert('الرجاء إدخال رقم هاتف سعودي صحيح (يبدأ بـ 05 ويتكون من 10 أرقام)');
+      }
+    });
+
+    // Back button click
+    backBtn.addEventListener('click', function() {
+      codeForm.classList.add('hidden');
+      phoneForm.classList.remove('hidden');
+      clearInterval(countdownInterval);
+      resetCodeInputs();
+    });
+
+    // Code input auto-focus
+    codeInputs.forEach((input, index) => {
+      input.addEventListener('input', function() {
+        if (this.value.length === 1 && index < codeInputs.length - 1) {
+          codeInputs[index + 1].focus();
+        }
+      });
+      
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Backspace' && this.value === '' && index > 0) {
+          codeInputs[index - 1].focus();
         }
       });
     });
+
+    // Verify button click
+    verifyBtn.addEventListener('click', function() {
+      const code = Array.from(codeInputs).map(input => input.value).join('');
+      if (code.length === 6) {
+        alert('تم التحقق بنجاح! سيتم توجيهك إلى واتساب...');
+        // Here you would typically redirect or proceed with the app
+      } else {
+        alert('الرجاء إدخال رمز التحقق المكون من 6 أرقام');
+      }
+    });
+
+    function startCountdown() {
+      countdown = 30;
+      countdownEl.textContent = countdown;
+      
+      countdownInterval = setInterval(() => {
+        countdown--;
+        countdownEl.textContent = countdown;
+        
+        if (countdown <= 0) {
+          clearInterval(countdownInterval);
+          document.querySelector('.timer').innerHTML = 'يمكنك الآن <a href="#" style="color: var(--green-600); text-decoration: underline;">إعادة إرسال الرمز</a>';
+        }
+      }, 1000);
+    }
+
+    function resetCodeInputs() {
+      codeInputs.forEach(input => input.value = '');
+      codeInputs[0].focus();
+    }
   </script>
 </body>
   </html>
